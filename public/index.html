@@ -78,16 +78,38 @@
       return countryEmojiMap[country] || "🌐";
     }
 
-    // 简单基于IP开头的预测函数，实际可换成更专业的库
-    function predictCountryByIP(ip) {
-      if (!ip) return "Unknown";
-      if (ip.startsWith("104.") || ip.startsWith("8.")) return "United States";
-      if (ip.startsWith("183.") || ip.startsWith("120.")) return "China";
-      if (ip.startsWith("103.")) return "Singapore";
-      if (ip.startsWith("202.")) return "Thailand";
-      if (ip.startsWith("111.")) return "China";
-      if (ip.endsWith(".uk")) return "United Kingdom"; // 域名简略判断
+    // 简单基于IP开头和域名后缀的预测函数
+    function predictCountryByIP(ipOrDomain) {
+      if (!ipOrDomain) return "Unknown";
+      // IP段预测
+      if (ipOrDomain.startsWith("104.") || ipOrDomain.startsWith("8.")) return "United States";
+      if (ipOrDomain.startsWith("183.") || ipOrDomain.startsWith("120.") || ipOrDomain.startsWith("111.")) return "China";
+      if (ipOrDomain.startsWith("103.")) return "Singapore";
+      if (ipOrDomain.startsWith("202.")) return "Thailand";
+      // 简单域名后缀判断
+      if (ipOrDomain.endsWith(".uk") || ipOrDomain.endsWith(".co.uk")) return "United Kingdom";
+      if (ipOrDomain.endsWith(".jp")) return "Japan";
+      if (ipOrDomain.endsWith(".cn")) return "China";
+      if (ipOrDomain.endsWith(".sg")) return "Singapore";
       return "Unknown";
+    }
+
+    // 校验是否为有效IPv4地址
+    function isValidIPv4(ip) {
+      const ipv4Regex = /^(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)){3}$/;
+      return ipv4Regex.test(ip);
+    }
+
+    // 校验是否为简单合法域名（仅支持字母数字和点、-）
+    function isValidDomain(domain) {
+      const domainRegex = /^(?!-)[A-Za-z0-9-]{1,63}(?<!-)(\.(?!-)[A-Za-z0-9-]{1,63}(?<!-))+$/;
+      return domainRegex.test(domain);
+    }
+
+    // 过滤只显示有效IP或域名的节点
+    function isValidServer(server) {
+      if (!server) return false;
+      return isValidIPv4(server) || isValidDomain(server);
     }
 
     fetch('vpn_nodes.json')
@@ -113,7 +135,11 @@
         table.appendChild(thead);
 
         const tbody = document.createElement('tbody');
+
         data.forEach(node => {
+          // 过滤无效server
+          if (!isValidServer(node.server)) return;
+
           let country = node.country && node.country !== 'Unknown' ? node.country : predictCountryByIP(node.server);
           if (!country || country === 'Unknown') country = "Unknown";
           const flag = getCountryEmoji(country);
