@@ -1,29 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Free VPN Nodes</title>
-</head>
-<body>
-  <h1>Free VPN Nodes</h1>
-  <ul id="vpn-list">Loading VPN nodes...</ul>
+import yaml
+import json
+import os
 
-  <script>
-    fetch('vpn_nodes.json')
-      .then(response => response.json())
-      .then(data => {
-        const list = document.getElementById('vpn-list');
-        list.innerHTML = '';
-        data.forEach(node => {
-          const item = document.createElement('li');
-          item.textContent = `${node.country} - ${node.name || ''} - ${node.server}:${node.port}`;
-          list.appendChild(item);
-        });
-      })
-      .catch(() => {
-        document.getElementById('vpn-list').textContent = 'Failed to load VPN nodes.';
-      });
-  </script>
-</body>
-</html>
+INPUT_YAML = "raw_nodes.yaml"
+OUTPUT_JSON = os.path.join("public", "vpn_nodes.json")
+
+def main():
+    if not os.path.exists(INPUT_YAML):
+        print(f"Error: {INPUT_YAML} not found.")
+        return
+
+    with open(INPUT_YAML, "r", encoding="utf-8") as f:
+        nodes = yaml.safe_load(f)
+
+    if not isinstance(nodes, list):
+        print(f"Error: Expected a list in {INPUT_YAML}, got {type(nodes)}")
+        return
+
+    output = []
+    for i, node in enumerate(nodes):
+        if not isinstance(node, dict):
+            print(f"Warning: Skipping item {i} because it's not a dict: {node}")
+            continue
+        server = node.get("server")
+        port = node.get("port")
+        country = node.get("country", "Unknown")
+        if not server or not port:
+            # 忽略无效节点
+            continue
+        output.append({
+            "country": country,
+            "server": server,
+            "port": port
+        })
+
+    os.makedirs(os.path.dirname(OUTPUT_JSON), exist_ok=True)
+    with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
+        json.dump(output, f, ensure_ascii=False, indent=2)
+
+    print(f"Converted {len(output)} valid VPN nodes to {OUTPUT_JSON}")
+
+if __name__ == "__main__":
+    main()
