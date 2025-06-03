@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Free VPN Nodes - Updated Daily (Clash / V2Ray / Shadowsocks)</title>
+
+  <!-- ✅ SEO Meta Tags -->
+  <meta name="description" content="Daily updated list of free VPN nodes for Clash, V2Ray, Shadowsocks (SSR), and more. Suitable for users in India, Southeast Asia, and worldwide. No registration needed.">
+  <meta name="keywords" content="free vpn, vpn nodes, vpn for India, vpn for Asia, clash nodes, v2ray config, shadowsocks free, ssr free, vpn list, daily vpn">
+  <meta name="author" content="VPN-Free-Node Project">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://kuke997.github.io/free-vpn-json/">
+
+  <!-- Open Graph (for Facebook, Telegram etc.) -->
+  <meta property="og:title" content="Free VPN Nodes - Updated Daily (Clash / V2Ray / Shadowsocks)">
+  <meta property="og:description" content="Free VPN list updated daily for India, Asia, and global users.">
+  <meta property="og:url" content="https://kuke997.github.io/free-vpn-json/">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free VPN Nodes - Updated Daily">
+  <meta name="twitter:description" content="Daily updated free VPN nodes for Clash, V2Ray, SSR. No signup required.">
+
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 720px; margin: auto; background: #f9f9f9; }
+    h1 { color: #2c3e50; }
+    #count { font-weight: bold; }
+    #nodes { margin-top: 20px; }
+    .node { padding: 10px; margin-bottom: 10px; background: #fff; border-radius: 8px; box-shadow: 0 0 4px rgba(0,0,0,0.05); }
+    footer { margin-top: 40px; font-size: 0.9em; color: #888; }
+  </style>
+</head>
+<body>
+  <h1>🌐 Free VPN Nodes (Clash / V2Ray / Shadowsocks)</h1>
+  <p>Last updated daily. No signup, completely free. <br />
+     Ideal for users in <strong>India</strong>, <strong>Southeast Asia</strong>, and worldwide.
+  </p>
+  <p>Currently <span id="count">0</span> active nodes found.</p>
+  <div id="nodes"></div>
+
+  <footer>
+    <p>Data source: <a href="https://github.com/kuke997/free-vpn-json" target="_blank">GitHub</a> | Powered by GitHub Actions</p>
+    <p>Share: <a href="https://t.me/share/url?url=https://kuke997.github.io/free-vpn-json/&text=Free%20VPN%20Nodes%20Updated%20Daily" target="_blank">Telegram</a> | <a href="https://twitter.com/intent/tweet?url=https://kuke997.github.io/free-vpn-json/&text=Free%20VPN%20Nodes%20for%20India%20and%20Asia" target="_blank">Twitter</a></p>
+  </footer>
+
+  <script>
+    fetch("vpn_nodes.json")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("count").textContent = data.length;
+        const container = document.getElementById("nodes");
+        data.forEach(node => {
+          const div = document.createElement("div");
+          div.className = "node";
+          div.textContent = `${node.name} (${node.country}) - ${node.server}:${node.port}`;
+          container.appendChild(div);
+        });
+      })
+      .catch(() => {
+        document.getElementById("nodes").textContent = "Failed to load VPN node data.";
+      });
+  </script>
+</body>
+</html>
