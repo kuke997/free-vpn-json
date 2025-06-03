@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>免费 VPN 节点列表 | Free VPN Nodes</title>
-  <meta name="description" content="免费 VPN 节点实时列表，支持多国家服务器，免费高速节点每日更新。">
-  <meta name="keywords" content="免费VPN, VPN节点, 免费节点, VPN服务器, VPN列表, VPN中国, VPN美国">
-  <meta name="author" content="kuke997">
-  <meta property="og:title" content="免费 VPN 节点列表">
-  <meta property="og:description" content="每日更新免费 VPN 节点列表，覆盖全球服务器。">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://kuke997.github.io/free-vpn-json/">
-  <meta property="og:image" content="https://kuke997.github.io/free-vpn-json/preview.png">
+  <title>Free VPN Node List | Updated Daily</title>
+  <meta name="description" content="Free VPN nodes updated daily with country flags, IP and port information for secure browsing worldwide." />
+  <meta name="keywords" content="Free VPN, VPN nodes, VPN servers, free nodes, secure internet, anonymous browsing" />
+  <meta name="author" content="kuke997" />
+  <meta property="og:title" content="Free VPN Node List" />
+  <meta property="og:description" content="Daily updated free VPN node list covering servers worldwide." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kuke997.github.io/free-vpn-json/" />
+  <meta property="og:image" content="https://kuke997.github.io/free-vpn-json/preview.png" />
 
   <style>
     body {
@@ -45,10 +45,12 @@
   </style>
 </head>
 <body>
-  <h1>免费 VPN 节点列表</h1>
-  <div id="vpn-list">加载中...</div>
+  <h1>Free VPN Node List</h1>
+  <p style="text-align:center; margin-bottom:20px;">Updated daily. Use these nodes freely and securely.</p>
+  <div id="vpn-list">Loading...</div>
 
   <script>
+    // Country to flag emoji map
     const countryEmojiMap = {
       "United States": "🇺🇸",
       "Japan": "🇯🇵",
@@ -76,15 +78,27 @@
       return countryEmojiMap[country] || "🌐";
     }
 
+    // 简单基于IP开头的预测函数，实际可换成更专业的库
+    function predictCountryByIP(ip) {
+      if (!ip) return "Unknown";
+      if (ip.startsWith("104.") || ip.startsWith("8.")) return "United States";
+      if (ip.startsWith("183.") || ip.startsWith("120.")) return "China";
+      if (ip.startsWith("103.")) return "Singapore";
+      if (ip.startsWith("202.")) return "Thailand";
+      if (ip.startsWith("111.")) return "China";
+      if (ip.endsWith(".uk")) return "United Kingdom"; // 域名简略判断
+      return "Unknown";
+    }
+
     fetch('vpn_nodes.json')
       .then(response => {
-        if (!response.ok) throw new Error('无法加载 VPN 节点数据');
+        if (!response.ok) throw new Error('Failed to load VPN node data');
         return response.json();
       })
       .then(data => {
         const container = document.getElementById('vpn-list');
         if (!data.length) {
-          container.textContent = '暂无可用 VPN 节点';
+          container.textContent = 'No VPN nodes available at the moment.';
           return;
         }
 
@@ -92,16 +106,18 @@
         const thead = document.createElement('thead');
         thead.innerHTML = `
           <tr>
-            <th>国家</th>
-            <th>服务器地址</th>
-            <th>端口</th>
+            <th>Country</th>
+            <th>Server</th>
+            <th>Port</th>
           </tr>`;
         table.appendChild(thead);
 
         const tbody = document.createElement('tbody');
         data.forEach(node => {
-          const country = node.country && node.country !== 'Unknown' ? node.country : '未知';
+          let country = node.country && node.country !== 'Unknown' ? node.country : predictCountryByIP(node.server);
+          if (!country || country === 'Unknown') country = "Unknown";
           const flag = getCountryEmoji(country);
+
           const row = document.createElement('tr');
           row.innerHTML = `
             <td><span class="flag">${flag}</span>${country}</td>
@@ -116,7 +132,7 @@
         container.appendChild(table);
       })
       .catch(err => {
-        document.getElementById('vpn-list').textContent = '加载 VPN 节点失败';
+        document.getElementById('vpn-list').textContent = 'Failed to load VPN nodes.';
         console.error(err);
       });
   </script>
