@@ -2,35 +2,77 @@ name: Crawl Free VPN + Convert + Publish JSON
 
 on:
   schedule:
-    - cron: '0 1 * * *'  # 每天 UTC 1 点运行（北京时间上午 9 点）
-  workflow_dispatch:
+    - cron: '0 0 * * *'  # 每天0点运行
+  workflow_dispatch:  # 支持手动触发
 
 jobs:
-  update-vpn-json:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: 📥 克隆仓库
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: 🐍 设置 Python
+      - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: '3.x'
 
-      - name: 📦 安装依赖
+      - name: Install dependencies
         run: |
-          pip install -U pip
-          pip install pyyaml requests
+          python -m pip install --upgrade pip
+          # 如果有依赖，写这里；目前没依赖可以注释或删掉
 
-      - name: 🐙 爬取免费 VPN 节点，生成 raw_nodes.yaml
+      - name: Run crawler script
+        run: python crawl_vpn_nodes.py
+
+      - name: Run convert script
+        run: python convert_vpn_yaml_to_json.py
+
+      - name: Generate index.html
         run: |
-          python crawl_vpn_nodes.py
+          mkdir -p public
+          cat > public/index.html <<'EOF'
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>免费VPN节点列表</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 600px; margin: auto; }
+    h1 { color: #2c3e50; }
+    #count { font-weight: bold; }
+    #nodes { margin-top: 20px; }
+    .node { padding: 8px; border-bottom: 1px solid #ddd; }
+  </style>
+</head>
+<body>
+  <h1>免费VPN节点列表</h1>
+  <p>从 <code>vpn_nodes.json</code> 自动生成，当前共 <span id="count">0</span> 个节点。</p>
+  <div id="nodes"></div>
 
-      - name: 🔁 转换为 vpn_nodes.json
-        run: |
-          python convert_vpn_yaml_to_json.py
+  <script>
+    fetch('vpn_nodes.json')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('count').textContent = data.length;
+        const container = document.getElementById('nodes');
+        data.forEach(node => {
+          const div = document.createElement('div');
+          div.className = 'node';
+          div.textContent = `${node.name} (${node.country}) - ${node.server}:${node.port}`;
+          container.appendChild(div);
+        });
+      })
+      .catch(() => {
+        document.getElementById('nodes').textContent = '加载节点数据失败。';
+      });
+  </script>
+</body>
+</html>
+EOF
 
-      - name: 🚀 发布到 GitHub Pages
+      - name: Publish to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
