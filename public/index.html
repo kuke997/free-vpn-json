@@ -1,84 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Free VPN servers for India, Southeast Asia and worldwide users. Updated daily. Supports Clash, V2Ray, Shadowsocks. No signup required.">
-  <meta name="keywords" content="Free VPN, VPN India, VPN Singapore, VPN USA, V2Ray, Shadowsocks, Clash, VPN Node JSON, Telegram VPN">
-  <meta name="author" content="BuLink.xyz">
-  <title>🌐 Free VPN Nodes - Daily Updated</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 1em;
-      background-color: #f9f9f9;
-      color: #333;
-    }
-    h1 {
-      color: #0057d9;
-      font-size: 1.6em;
-    }
-    .node {
-      padding: 0.5em;
-      border-bottom: 1px solid #ccc;
-      font-size: 1em;
-    }
-    .node span {
-      font-weight: bold;
-    }
-    .footer {
-      margin-top: 2em;
-      font-size: 0.9em;
-      color: #777;
-    }
-    code {
-      background: #eee;
-      padding: 2px 6px;
-      border-radius: 3px;
-    }
-  </style>
-</head>
-<body>
-  <h1>🌐 Free VPN Nodes (Clash / V2Ray / Shadowsocks)</h1>
-  <p>Updated daily. No signup required. 100% Free.<br>
-     Optimized for users in <strong>India, Southeast Asia, and worldwide</strong>.</p>
-  <div id="vpn-list">Loading...</div>
-  <div class="footer">
-    Last updated: <span id="updated-time">-</span> |
-    Data source: <code>vpn_nodes.json</code><br>
-    <a href="https://github.com/kuke997/free-vpn-json" target="_blank">GitHub Project</a> by BuLink.xyz
-  </div>
+import yaml
+import json
+import os
 
-  <script>
-    const emojiMap = {
-      "Hong Kong": "🇭🇰",
-      "Singapore": "🇸🇬",
-      "Japan": "🇯🇵",
-      "United States": "🇺🇸",
-      "India": "🇮🇳",
-      "Germany": "🇩🇪",
-      "China Mobile Guangdong": "🇨🇳",
-    };
+INPUT_YAML = "raw_nodes.yaml"
+OUTPUT_JSON = os.path.join("public", "vpn_nodes.json")
 
-    fetch('vpn_nodes.json')
-      .then(res => res.json())
-      .then(data => {
-        const list = document.getElementById('vpn-list');
-        list.innerHTML = '';
-        data.forEach(node => {
-          const flag = emojiMap[node.country] || '🌐';
-          const el = document.createElement('div');
-          el.className = 'node';
-          el.innerHTML = `${flag} <span>${node.country}</span> - ${node.server}:${node.port}`;
-          list.appendChild(el);
-        });
-        document.getElementById('updated-time').textContent = new Date().toLocaleString();
-      })
-      .catch(err => {
-        document.getElementById('vpn-list').textContent = 'Failed to load data.';
-      });
-  </script>
-</body>
-</html>
+def main():
+    if not os.path.exists(INPUT_YAML):
+        print(f"Error: {INPUT_YAML} not found.")
+        return
+
+    with open(INPUT_YAML, "r", encoding="utf-8") as f:
+        nodes = yaml.safe_load(f)
+
+    if not isinstance(nodes, list):
+        print(f"Error: Expected a list in {INPUT_YAML}, got {type(nodes)}")
+        return
+
+    output = []
+    for i, node in enumerate(nodes):
+        if not isinstance(node, dict):
+            print(f"Warning: Skipping item {i} because it's not a dict: {node}")
+            continue
+        server = node.get("server")
+        port = node.get("port")
+        country = node.get("country", "Unknown")
+        if not server or not port:
+            # 忽略无效节点
+            continue
+        output.append({
+            "country": country,
+            "server": server,
+            "port": port
+        })
+
+    os.makedirs(os.path.dirname(OUTPUT_JSON), exist_ok=True)
+    with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
+        json.dump(output, f, ensure_ascii=False, indent=2)
+
+    print(f"Converted {len(output)} valid VPN nodes to {OUTPUT_JSON}")
+
+if __name__ == "__main__":
+    main()
