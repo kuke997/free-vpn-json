@@ -2,33 +2,35 @@ name: Crawl Free VPN + Convert + Publish JSON
 
 on:
   schedule:
-    - cron: '0 0 * * *'   # 每天0点执行
+    - cron: '0 1 * * *'  # 每天 UTC 1 点运行（北京时间上午 9 点）
   workflow_dispatch:
 
 jobs:
-  build:
+  update-vpn-json:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - name: 📥 克隆仓库
         uses: actions/checkout@v3
 
-      - name: Setup Python
+      - name: 🐍 设置 Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: '3.10'
 
-      - name: Install dependencies
+      - name: 📦 安装依赖
         run: |
-          python -m pip install --upgrade pip
+          pip install -U pip
+          pip install pyyaml requests
 
-      - name: Run crawler script
-        run: python crawl_vpn_nodes.py
+      - name: 🐙 爬取免费 VPN 节点，生成 raw_nodes.yaml
+        run: |
+          python crawl_vpn_nodes.py
 
-      - name: Run convert script
-        run: python convert_vpn_yaml_to_json.py
+      - name: 🔁 转换为 vpn_nodes.json
+        run: |
+          python convert_vpn_yaml_to_json.py
 
-      - name: Generate index.html
+      - name: 🧱 构建 public 目录（vpn_nodes.json + index.html）
         run: |
           mkdir -p public
           cp vpn_nodes.json public/
@@ -72,7 +74,7 @@ jobs:
 </html>
 EOF
 
-      - name: Publish to GitHub Pages
+      - name: 🚀 发布到 GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
