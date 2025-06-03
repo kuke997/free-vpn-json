@@ -1,32 +1,30 @@
-
+import yaml
 import json
 from pathlib import Path
 
-# 假设你已有的爬虫输出文件路径
-INPUT_PATH = Path("./raw_nodes.yaml")  # 或 .json，根据你实际情况
-OUTPUT_PATH = Path("./public/vpn_nodes.json")
-
-# 示例：从 YAML 加载并提取关键信息
-import yaml
-
-def convert_yaml_to_json(input_path, output_path):
-    with open(input_path, 'r', encoding='utf-8') as f:
+def convert():
+    with open("raw_nodes.yaml", "r", encoding="utf-8") as f:
         data = yaml.safe_load(f)
 
-    output = []
-    for node in data.get('proxies', []):
-        item = {
-            "remarks": node.get("name", "Free VPN Node"),
-            "type": node.get("type", "vmess"),
-            "country": node.get("country", "Unknown"),
-            "subscription": node.get("link", "")  # 或 node['url'] 等字段名
-        }
-        output.append(item)
+    proxies = data.get("proxies", [])
+    simplified = []
+    for p in proxies:
+        simplified.append({
+            "name": p.get("name", "Free Node"),
+            "type": p.get("type"),
+            "server": p.get("server"),
+            "port": p.get("port"),
+            "uuid": p.get("uuid"),
+            "cipher": p.get("cipher"),
+            "link": p.get("link"),
+            "country": p.get("country", "Unknown")
+        })
 
-    with open(output_path, 'w', encoding='utf-8') as f:
-        json.dump(output, f, indent=2, ensure_ascii=False)
+    Path("public").mkdir(exist_ok=True)
+    with open("public/vpn_nodes.json", "w", encoding="utf-8") as f:
+        json.dump(simplified, f, ensure_ascii=False, indent=2)
 
-    print(f"✅ Exported {len(output)} VPN nodes to {output_path}")
+    print(f"✅ Saved {len(simplified)} nodes to public/vpn_nodes.json")
 
 if __name__ == "__main__":
-    convert_yaml_to_json(INPUT_PATH, OUTPUT_PATH)
+    convert()
