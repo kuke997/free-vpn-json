@@ -3,19 +3,79 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Free VPN Nodes</title>
+  <title>免费 VPN 节点列表 | Free VPN Nodes</title>
+  <meta name="description" content="免费 VPN 节点实时列表，支持多国家服务器，免费高速节点每日更新。">
+  <meta name="keywords" content="免费VPN, VPN节点, 免费节点, VPN服务器, VPN列表, VPN中国, VPN美国">
+  <meta name="author" content="kuke997">
+  <meta property="og:title" content="免费 VPN 节点列表">
+  <meta property="og:description" content="每日更新免费 VPN 节点列表，覆盖全球服务器。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kuke997.github.io/free-vpn-json/">
+  <meta property="og:image" content="https://kuke997.github.io/free-vpn-json/preview.png">
+
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; }
-    h1 { color: #333; }
-    ul { list-style: none; padding: 0; }
-    li { padding: 5px 0; border-bottom: 1px solid #ddd; }
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px 20px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    th, td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background-color: #f1f1f1;
+    }
+    .flag {
+      font-size: 1.2em;
+      margin-right: 6px;
+    }
   </style>
 </head>
 <body>
-  <h1>Free VPN Nodes</h1>
+  <h1>免费 VPN 节点列表</h1>
   <div id="vpn-list">加载中...</div>
 
   <script>
+    const countryEmojiMap = {
+      "United States": "🇺🇸",
+      "Japan": "🇯🇵",
+      "Singapore": "🇸🇬",
+      "Germany": "🇩🇪",
+      "India": "🇮🇳",
+      "France": "🇫🇷",
+      "Netherlands": "🇳🇱",
+      "Canada": "🇨🇦",
+      "Russia": "🇷🇺",
+      "United Kingdom": "🇬🇧",
+      "China": "🇨🇳",
+      "Hong Kong": "🇭🇰",
+      "Taiwan": "🇹🇼",
+      "South Korea": "🇰🇷",
+      "Brazil": "🇧🇷",
+      "Thailand": "🇹🇭",
+      "Australia": "🇦🇺",
+      "Malaysia": "🇲🇾",
+      "Vietnam": "🇻🇳"
+    };
+
+    function getCountryEmoji(country) {
+      if (!country || country.toLowerCase() === "unknown") return "🌐";
+      return countryEmojiMap[country] || "🌐";
+    }
+
     fetch('vpn_nodes.json')
       .then(response => {
         if (!response.ok) throw new Error('无法加载 VPN 节点数据');
@@ -24,17 +84,36 @@
       .then(data => {
         const container = document.getElementById('vpn-list');
         if (!data.length) {
-          container.textContent = '暂无 VPN 节点';
+          container.textContent = '暂无可用 VPN 节点';
           return;
         }
-        const ul = document.createElement('ul');
+
+        const table = document.createElement('table');
+        const thead = document.createElement('thead');
+        thead.innerHTML = `
+          <tr>
+            <th>国家</th>
+            <th>服务器地址</th>
+            <th>端口</th>
+          </tr>`;
+        table.appendChild(thead);
+
+        const tbody = document.createElement('tbody');
         data.forEach(node => {
-          const li = document.createElement('li');
-          li.textContent = `${node.country} — ${node.server}:${node.port}`;
-          ul.appendChild(li);
+          const country = node.country && node.country !== 'Unknown' ? node.country : '未知';
+          const flag = getCountryEmoji(country);
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td><span class="flag">${flag}</span>${country}</td>
+            <td>${node.server}</td>
+            <td>${node.port}</td>
+          `;
+          tbody.appendChild(row);
         });
+
+        table.appendChild(tbody);
         container.innerHTML = '';
-        container.appendChild(ul);
+        container.appendChild(table);
       })
       .catch(err => {
         document.getElementById('vpn-list').textContent = '加载 VPN 节点失败';
