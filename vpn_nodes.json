@@ -60,36 +60,6 @@
     "country": "Unknown"
   },
   {
-    "name": "13|🇭🇰 香港|@ripaojiedian",
-    "type": "vmess",
-    "server": "183.236.51.38",
-    "port": 49554,
-    "uuid": "418048af-a293-4b99-9b0c-98ca3580dd24",
-    "cipher": "auto",
-    "link": "vmess://eyJ2IjogIjIiLCAicHMiOiAiMTN88J+HrfCfh7Ag6aaZ5rivfEByaXBhb2ppZWRpYW4iLCAiYWRkIjogIjE4My4yMzYuNTEuMzgiLCAicG9ydCI6IDQ5NTU0LCAiYWlkIjogNjQsICJzY3kiOiAiYXV0byIsICJuZXQiOiAidGNwIiwgInR5cGUiOiAibm9uZSIsICJ0bHMiOiAiIiwgImlkIjogIjQxODA0OGFmLWEyOTMtNGI5OS05YjBjLTk4Y2EzNTgwZGQyNCJ9",
-    "country": "Unknown"
-  },
-  {
-    "name": "13|🇭🇰 香港3|@ripaojiedian",
-    "type": "vmess",
-    "server": "183.236.51.38",
-    "port": 49302,
-    "uuid": "418048af-a293-4b99-9b0c-98ca3580dd24",
-    "cipher": "auto",
-    "link": "vmess://eyJ2IjogIjIiLCAicHMiOiAiMTN88J+HrfCfh7Ag6aaZ5rivM3xAcmlwYW9qaWVkaWFuIiwgImFkZCI6ICIxODMuMjM2LjUxLjM4IiwgInBvcnQiOiA0OTMwMiwgImFpZCI6IDY0LCAic2N5IjogImF1dG8iLCAibmV0IjogInRjcCIsICJ0eXBlIjogIm5vbmUiLCAidGxzIjogIiIsICJpZCI6ICI0MTgwNDhhZi1hMjkzLTRiOTktOWIwYy05OGNhMzU4MGRkMjQifQ==",
-    "country": "Unknown"
-  },
-  {
-    "name": "13|🇭🇰 香港4|@ripaojiedian",
-    "type": "vmess",
-    "server": "38.147.189.7",
-    "port": 27680,
-    "uuid": "1e17ef3c-b4a9-4430-ba37-3c986dba8f2f",
-    "cipher": "auto",
-    "link": "vmess://eyJ2IjogIjIiLCAicHMiOiAiMTN88J+HrfCfh7Ag6aaZ5rivNHxAcmlwYW9qaWVkaWFuIiwgImFkZCI6ICIzOC4xNDcuMTg5LjciLCAicG9ydCI6IDI3NjgwLCAiYWlkIjogMCwgInNjeSI6ICJhdXRvIiwgIm5ldCI6ICJ0Y3AiLCAidHlwZSI6ICJub25lIiwgInRscyI6ICIiLCAiaWQiOiAiMWUxN2VmM2MtYjRhOS00NDMwLWJhMzctM2M5ODZkYmE4ZjJmIn0=",
-    "country": "Unknown"
-  },
-  {
     "name": "13|🇭🇰 香港5|@ripaojiedian",
     "type": "vmess",
     "server": "120.232.153.40",
@@ -110,13 +80,23 @@
     "country": "Unknown"
   },
   {
-    "name": "13|🇭🇰 香港8|@ripaojiedian",
+    "name": "13|🇭🇰 香港7@ripaojiedian",
     "type": "vmess",
-    "server": "183.236.51.38",
-    "port": 59652,
-    "uuid": "418048af-a293-4b99-9b0c-98ca3580dd24",
+    "server": "103.224.80.111",
+    "port": 29992,
+    "uuid": "c3659582-a6e0-45c2-92ec-3b4d8b240e07",
     "cipher": "auto",
-    "link": "vmess://eyJ2IjogIjIiLCAicHMiOiAiMTN88J+HrfCfh7Ag6aaZ5rivOHxAcmlwYW9qaWVkaWFuIiwgImFkZCI6ICIxODMuMjM2LjUxLjM4IiwgInBvcnQiOiA1OTY1MiwgImFpZCI6IDY0LCAic2N5IjogImF1dG8iLCAibmV0IjogInRjcCIsICJ0eXBlIjogIm5vbmUiLCAidGxzIjogIiIsICJpZCI6ICI0MTgwNDhhZi1hMjkzLTRiOTktOWIwYy05OGNhMzU4MGRkMjQifQ==",
+    "link": "vmess://eyJ2IjogIjIiLCAicHMiOiAiMTN88J+HrfCfh7Ag6aaZ5rivN0ByaXBhb2ppZWRpYW4iLCAiYWRkIjogIjEwMy4yMjQuODAuMTExIiwgInBvcnQiOiAyOTk5MiwgImFpZCI6IDAsICJzY3kiOiAiYXV0byIsICJuZXQiOiAidGNwIiwgInR5cGUiOiAibm9uZSIsICJ0bHMiOiAiIiwgImlkIjogImMzNjU5NTgyLWE2ZTAtNDVjMi05MmVjLTNiNGQ4YjI0MGUwNyJ9",
+    "country": "Unknown"
+  },
+  {
+    "name": "13,14|香港8|@ripaojiedian",
+    "type": "vmess",
+    "server": "9b53711d-sxlj40-szcxa1-dmd8.hkt.east.wctype.com",
+    "port": "460",
+    "uuid": "2058bdd6-1505-11f0-a035-f23c95b6f51d",
+    "cipher": "auto",
+    "link": "vmess://eyJ2IjogIjIiLCAicHMiOiAiMTMsMTR86aaZ5rivOHxAcmlwYW9qaWVkaWFuIiwgImFkZCI6ICI5YjUzNzExZC1zeGxqNDAtc3pjeGExLWRtZDguaGt0LmVhc3Qud2N0eXBlLmNvbSIsICJwb3J0IjogIjQ2MCIsICJhaWQiOiAyLCAic2N5IjogImF1dG8iLCAibmV0IjogIndzIiwgInR5cGUiOiAibm9uZSIsICJ0bHMiOiAiIiwgImlkIjogIjIwNThiZGQ2LTE1MDUtMTFmMC1hMDM1LWYyM2M5NWI2ZjUxZCIsICJzbmkiOiAiIiwgImhvc3QiOiAiYTYwNTQ3NzE3OC5tLmN0cmlwLmNvbSIsICJwYXRoIjogIi8ifQ==",
     "country": "Unknown"
   },
   {
@@ -127,6 +107,16 @@
     "uuid": "cbb3f877-d1fb-344c-87a9-d153bffd5484",
     "cipher": "auto",
     "link": "vmess://eyJ2IjogIjIiLCAicHMiOiAiMTMsMTR85paw5Yqg5Z2hfEByaXBhb2ppZWRpYW4iLCAiYWRkIjogInYxMi5oZWR1aWFuLmxpbmsiLCAicG9ydCI6ICIzMDgxMiIsICJhaWQiOiAyLCAic2N5IjogImF1dG8iLCAibmV0IjogIndzIiwgInR5cGUiOiAibm9uZSIsICJ0bHMiOiAiIiwgImlkIjogImNiYjNmODc3LWQxZmItMzQ0Yy04N2E5LWQxNTNiZmZkNTQ4NCIsICJzbmkiOiAiIiwgImhvc3QiOiAib2NiYy5jb20iLCAicGF0aCI6ICIvb29vbyJ9",
+    "country": "Unknown"
+  },
+  {
+    "name": "13|🇸🇬 新加坡2|@ripaojiedian",
+    "type": "vmess",
+    "server": "183.236.51.38",
+    "port": 41024,
+    "uuid": "418048af-a293-4b99-9b0c-98ca3580dd24",
+    "cipher": "auto",
+    "link": "vmess://eyJ2IjogIjIiLCAicHMiOiAiMTN88J+HuPCfh6wg5paw5Yqg5Z2hMnxAcmlwYW9qaWVkaWFuIiwgImFkZCI6ICIxODMuMjM2LjUxLjM4IiwgInBvcnQiOiA0MTAyNCwgImFpZCI6IDAsICJzY3kiOiAiYXV0byIsICJuZXQiOiAidGNwIiwgInR5cGUiOiAibm9uZSIsICJ0bHMiOiAiIiwgImlkIjogIjQxODA0OGFmLWEyOTMtNGI5OS05YjBjLTk4Y2EzNTgwZGQyNCJ9",
     "country": "Unknown"
   },
   {
@@ -160,36 +150,6 @@
     "country": "Unknown"
   },
   {
-    "name": "14|香港|@ripaojiedian",
-    "type": "vmess",
-    "server": "183.236.51.38",
-    "port": "49554",
-    "uuid": "418048af-a293-4b99-9b0c-98ca3580dd24",
-    "cipher": "auto",
-    "link": "vmess://eyJ2IjogIjIiLCAicHMiOiAiMTR86aaZ5rivfEByaXBhb2ppZWRpYW4iLCAiYWRkIjogIjE4My4yMzYuNTEuMzgiLCAicG9ydCI6ICI0OTU1NCIsICJhaWQiOiA2NCwgInNjeSI6ICJhdXRvIiwgIm5ldCI6ICJ0Y3AiLCAidHlwZSI6ICJub25lIiwgInRscyI6ICIiLCAiaWQiOiAiNDE4MDQ4YWYtYTI5My00Yjk5LTliMGMtOThjYTM1ODBkZDI0IiwgInNuaSI6ICIifQ==",
-    "country": "Unknown"
-  },
-  {
-    "name": "14|香港3|@ripaojiedian",
-    "type": "vmess",
-    "server": "183.236.51.38",
-    "port": "49302",
-    "uuid": "418048af-a293-4b99-9b0c-98ca3580dd24",
-    "cipher": "auto",
-    "link": "vmess://eyJ2IjogIjIiLCAicHMiOiAiMTR86aaZ5rivM3xAcmlwYW9qaWVkaWFuIiwgImFkZCI6ICIxODMuMjM2LjUxLjM4IiwgInBvcnQiOiAiNDkzMDIiLCAiYWlkIjogNjQsICJzY3kiOiAiYXV0byIsICJuZXQiOiAidGNwIiwgInR5cGUiOiAibm9uZSIsICJ0bHMiOiAiIiwgImlkIjogIjQxODA0OGFmLWEyOTMtNGI5OS05YjBjLTk4Y2EzNTgwZGQyNCIsICJzbmkiOiAiIn0=",
-    "country": "Unknown"
-  },
-  {
-    "name": "14|香港4|@ripaojiedian",
-    "type": "vmess",
-    "server": "38.147.189.7",
-    "port": "27680",
-    "uuid": "1e17ef3c-b4a9-4430-ba37-3c986dba8f2f",
-    "cipher": "auto",
-    "link": "vmess://eyJ2IjogIjIiLCAicHMiOiAiMTR86aaZ5rivNHxAcmlwYW9qaWVkaWFuIiwgImFkZCI6ICIzOC4xNDcuMTg5LjciLCAicG9ydCI6ICIyNzY4MCIsICJhaWQiOiAwLCAic2N5IjogImF1dG8iLCAibmV0IjogInRjcCIsICJ0eXBlIjogIm5vbmUiLCAidGxzIjogIiIsICJpZCI6ICIxZTE3ZWYzYy1iNGE5LTQ0MzAtYmEzNy0zYzk4NmRiYThmMmYiLCAic25pIjogIiJ9",
-    "country": "Unknown"
-  },
-  {
     "name": "14|香港5|@ripaojiedian",
     "type": "vmess",
     "server": "120.232.153.40",
@@ -200,13 +160,13 @@
     "country": "Unknown"
   },
   {
-    "name": "14|香港8|@ripaojiedian",
+    "name": "14|香港7@ripaojiedian",
     "type": "vmess",
-    "server": "183.236.51.38",
-    "port": "59652",
-    "uuid": "418048af-a293-4b99-9b0c-98ca3580dd24",
+    "server": "103.224.80.111",
+    "port": "29992",
+    "uuid": "c3659582-a6e0-45c2-92ec-3b4d8b240e07",
     "cipher": "auto",
-    "link": "vmess://eyJ2IjogIjIiLCAicHMiOiAiMTR86aaZ5rivOHxAcmlwYW9qaWVkaWFuIiwgImFkZCI6ICIxODMuMjM2LjUxLjM4IiwgInBvcnQiOiAiNTk2NTIiLCAiYWlkIjogNjQsICJzY3kiOiAiYXV0byIsICJuZXQiOiAidGNwIiwgInR5cGUiOiAibm9uZSIsICJ0bHMiOiAiIiwgImlkIjogIjQxODA0OGFmLWEyOTMtNGI5OS05YjBjLTk4Y2EzNTgwZGQyNCIsICJzbmkiOiAiIn0=",
+    "link": "vmess://eyJ2IjogIjIiLCAicHMiOiAiMTR86aaZ5rivN0ByaXBhb2ppZWRpYW4iLCAiYWRkIjogIjEwMy4yMjQuODAuMTExIiwgInBvcnQiOiAiMjk5OTIiLCAiYWlkIjogMCwgInNjeSI6ICJhdXRvIiwgIm5ldCI6ICJ0Y3AiLCAidHlwZSI6ICJub25lIiwgInRscyI6ICIiLCAiaWQiOiAiYzM2NTk1ODItYTZlMC00NWMyLTkyZWMtM2I0ZDhiMjQwZTA3IiwgInNuaSI6ICIifQ==",
     "country": "Unknown"
   },
   {
@@ -217,6 +177,16 @@
     "uuid": "a3d04548-625c-4658-9ff0-f9a7835d1f6d",
     "cipher": "auto",
     "link": "vmess://eyJ2IjogIjIiLCAicHMiOiAiMTR85pel5pysVjJ8QHJpcGFvamllZGlhbiIsICJhZGQiOiAiOC4yMTEuMTU0LjEwNyIsICJwb3J0IjogIjUwOTUxIiwgImFpZCI6IDAsICJzY3kiOiAiYXV0byIsICJuZXQiOiAia2NwIiwgInR5cGUiOiAibm9uZSIsICJ0bHMiOiAiIiwgImlkIjogImEzZDA0NTQ4LTYyNWMtNDY1OC05ZmYwLWY5YTc4MzVkMWY2ZCIsICJzbmkiOiAiIn0=",
+    "country": "Unknown"
+  },
+  {
+    "name": "14|新加坡2|@ripaojiedian",
+    "type": "vmess",
+    "server": "183.236.51.38",
+    "port": "41024",
+    "uuid": "418048af-a293-4b99-9b0c-98ca3580dd24",
+    "cipher": "auto",
+    "link": "vmess://eyJ2IjogIjIiLCAicHMiOiAiMTR85paw5Yqg5Z2hMnxAcmlwYW9qaWVkaWFuIiwgImFkZCI6ICIxODMuMjM2LjUxLjM4IiwgInBvcnQiOiAiNDEwMjQiLCAiYWlkIjogMCwgInNjeSI6ICJhdXRvIiwgIm5ldCI6ICJ0Y3AiLCAidHlwZSI6ICJub25lIiwgInRscyI6ICIiLCAiaWQiOiAiNDE4MDQ4YWYtYTI5My00Yjk5LTliMGMtOThjYTM1ODBkZDI0IiwgInNuaSI6ICIifQ==",
     "country": "Unknown"
   },
   {
