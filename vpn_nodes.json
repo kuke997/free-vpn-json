@@ -70,13 +70,13 @@
     "country": "Unknown"
   },
   {
-    "name": "🇭🇰 香港3|@ripaojiedian",
+    "name": "香港4|@ripaojiedian",
     "type": "vmess",
-    "server": "43.247.135.170",
-    "port": 46210,
-    "uuid": "d1eca706-1aae-42d3-bab0-69995d7b023d",
+    "server": "977fb705-symkg0-t02swp-fa3p.hgc1.tcpbbr.net",
+    "port": "8080",
+    "uuid": "905fcd78-866c-81e1-3cb8-1beb59d661ab",
     "cipher": "auto",
-    "link": "vmess://eyJ2IjogIjIiLCAicHMiOiAi8J+HrfCfh7Ag6aaZ5rivM3xAcmlwYW9qaWVkaWFuIiwgImFkZCI6ICI0My4yNDcuMTM1LjE3MCIsICJwb3J0IjogNDYyMTAsICJhaWQiOiAwLCAic2N5IjogImF1dG8iLCAibmV0IjogInRjcCIsICJ0eXBlIjogIm5vbmUiLCAidGxzIjogIiIsICJpZCI6ICJkMWVjYTcwNi0xYWFlLTQyZDMtYmFiMC02OTk5NWQ3YjAyM2QifQ==",
+    "link": "vmess://eyJ2IjogIjIiLCAicHMiOiAi6aaZ5rivNHxAcmlwYW9qaWVkaWFuIiwgImFkZCI6ICI5NzdmYjcwNS1zeW1rZzAtdDAyc3dwLWZhM3AuaGdjMS50Y3BiYnIubmV0IiwgInBvcnQiOiAiODA4MCIsICJhaWQiOiAwLCAic2N5IjogImF1dG8iLCAibmV0IjogIndzIiwgInR5cGUiOiAibm9uZSIsICJ0bHMiOiAiIiwgImlkIjogIjkwNWZjZDc4LTg2NmMtODFlMS0zY2I4LTFiZWI1OWQ2NjFhYiIsICJzbmkiOiAiIiwgImhvc3QiOiAiYnJvYWRjYXN0bHYuY2hhdC5iaWxpYmlsaS5jb20iLCAicGF0aCI6ICIvIn0=",
     "country": "Unknown"
   },
   {
@@ -92,22 +92,12 @@
   {
     "name": "美国3|@ripaojiedian",
     "type": "vmess",
-    "server": "38.11.18.221",
-    "port": "38003",
-    "uuid": "418048af-a293-4b99-9b0c-98ca3580dd24",
+    "server": "104.21.57.206",
+    "port": "80",
+    "uuid": "3d9741da-c0e4-47cc-a5e0-f1af3d337dae",
     "cipher": "auto",
-    "link": "vmess://eyJ2IjogIjIiLCAicHMiOiAi576O5Zu9M3xAcmlwYW9qaWVkaWFuIiwgImFkZCI6ICIzOC4xMS4xOC4yMjEiLCAicG9ydCI6ICIzODAwMyIsICJhaWQiOiAwLCAic2N5IjogImF1dG8iLCAibmV0IjogIndzIiwgInR5cGUiOiAibm9uZSIsICJ0bHMiOiAidGxzIiwgImlkIjogIjQxODA0OGFmLWEyOTMtNGI5OS05YjBjLTk4Y2EzNTgwZGQyNCIsICJzbmkiOiAid3d3LjQ3NzIwNjAyLnh5eiIsICJob3N0IjogInd3dy40NzcyMDYwMi54eXoiLCAicGF0aCI6ICIvcGF0aC8yNjIwMjkwNjIzMTUifQ==",
-    "country": "Unknown"
-  },
-  {
-    "name": "香港3|@ripaojiedian",
-    "type": "vmess",
-    "server": "43.247.135.170",
-    "port": "46210",
-    "uuid": "d1eca706-1aae-42d3-bab0-69995d7b023d",
-    "cipher": "auto",
-    "link": "vmess://eyJ2IjogIjIiLCAicHMiOiAi6aaZ5rivM3xAcmlwYW9qaWVkaWFuIiwgImFkZCI6ICI0My4yNDcuMTM1LjE3MCIsICJwb3J0IjogIjQ2MjEwIiwgImFpZCI6IDAsICJzY3kiOiAiYXV0byIsICJuZXQiOiAidGNwIiwgInR5cGUiOiAibm9uZSIsICJ0bHMiOiAiIiwgImlkIjogImQxZWNhNzA2LTFhYWUtNDJkMy1iYWIwLTY5OTk1ZDdiMDIzZCIsICJzbmkiOiAiIn0=",
-    "country": "Unknown"
+    "link": "vmess://eyJ2IjogIjIiLCAicHMiOiAi576O5Zu9M3xAcmlwYW9qaWVkaWFuIiwgImFkZCI6ICIxMDQuMjEuNTcuMjA2IiwgInBvcnQiOiAiODAiLCAiYWlkIjogMCwgInNjeSI6ICJhdXRvIiwgIm5ldCI6ICJ3cyIsICJ0eXBlIjogIm5vbmUiLCAidGxzIjogIiIsICJpZCI6ICIzZDk3NDFkYS1jMGU0LTQ3Y2MtYTVlMC1mMWFmM2QzMzdkYWUiLCAic25pIjogIiIsICJob3N0IjogInNzc3Nzc3Nzc3NzZGRkZmd0LjQ0NDQ5MjYueHl6IiwgInBhdGgiOiAiL1UyWjBGb0JrZ3RacWZ3QXdZMlNObSJ9",
+    "country": "US"
   },
   {
     "name": "香港v2|@ripaojiedian",
